@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="9月 20, 2017" />
-        <meta property="article:modified_time" content="9月 21, 2017" />
+        <meta property="article:modified_time" content="9月 22, 2017" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "DOM",
     "url": "https://mosquito1307.github.io/2017/09/20/DOM/index.html",
     "datePublished": "9月 20, 2017",
-    "dateModified": "9月 21, 2017",
+    "dateModified": "9月 22, 2017",
     "description": "",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -338,7 +338,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DOM概览"><span class="post-toc-number">1.</span> <span class="post-toc-text">DOM概览</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Node对象"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Node对象</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Document对象"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Document对象</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DOM概览"><span class="post-toc-number">1.</span> <span class="post-toc-text">DOM概览</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Node对象"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Node对象</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Document对象"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Document对象</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#节点的属性"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">节点的属性</span></a></li></ol></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -524,6 +524,39 @@
 </ol>
 <hr>
 <h4 id="Document对象"><a href="#Document对象" class="headerlink" title="Document对象"></a>Document对象</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Document表示文档，浏览器打开一个 HTML 文档时，该文档就成了一个 document 对象，Document 对象使我们可以对 HTML 页面中的所有元素进行访问。它是window对象的一部分，可用window.document，往往省略window。</p>
+<ol>
+<li><p>查找元素<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在所有DOM的应用中，最常用的就是获得对元素节点的引用。这些都是document对象的方法。</p>
+<ul>
+<li>getElementById():通过元素中的id值来获得，因为id值在一个document中只有一个，所以获得的值只有一个。</li>
+<li>getElementsByTagName():参数名为元素的标签名， 返回一个NodeList。</li>
+<li>getElementsByName(): 参数名为属性name的值，返回一个NodeList。</li>
+<li>getElementsByClassName():参数名为属性class的值，返回一个NodeList。</li>
+</ul>
+</li>
+<li><p>document对象属性<br><br><img src="http://ovds5brg3.bkt.clouddn.com/document.jpg" alt=""></p>
+</li>
+<li><p>document对象集合<br><br><img src="http://ovds5brg3.bkt.clouddn.com/7.jpg" alt=""></p>
+</li>
+</ol>
+<hr>
+<h4 id="节点的属性"><a href="#节点的属性" class="headerlink" title="节点的属性"></a>节点的属性</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在DOM不仅可以增删减差DOM，还可以为节点查询和设置属性。</p>
+<ul>
+<li>getAttribute()：接受一个参数为属性的名字，返回属性的值,用来查询节点的属性值。</li>
+<li>setAttribute():接受两个参数，一个为属性的名字，另一个为属性的值。</li>
+<li>removeAttribute()：接受一个参数为属性的名字，用于删除该属性。</li>
+<li><p>attributes属性：通过访问attributes属性会获得一个NamedNodeMap，也是一个类数对象，这个对象有4个方法：</p>
+<ol>
+<li>getNamedItem（name）：返回nodeName为name的节点</li>
+<li>removeNamedItem（name）：移除nodeName为name的节点</li>
+<li>setNamedItem（name）：添加节点，一nodeName为索引</li>
+<li>item（pos）：返回位于数字pos的节点。</li>
+</ol>
+</li>
+<li><p>createElement（）：通过这个方法创建元素，接受一个参数为要创建元素的标签名。</p>
+</li>
+<li>createTextNode（）：通过这个方法来创建文本节点，接受一个参数为要插入的文本。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//创建&lt;h1&gt;hello&lt;/hello&gt;</div><div class="line">var  element=document.createElement(&quot;h1&quot;);</div><div class="line">var  text=document.createTextNode(&quot;hello&quot;);</div><div class="line"></div><div class="line">element.appendChild（text）;</div><div class="line">document.body.appendChild(element);</div></pre></td></tr></table></figure>
 
     
 
